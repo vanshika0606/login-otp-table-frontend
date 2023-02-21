@@ -69,11 +69,7 @@ const [visible, setVisible] = useState(0)
            if(result.success===true){
              
              
-             Cookies.set('token', result.token,{
-              expires:new Date(
-                Date.now() + 5*24*60*60*1000
-            )
-             })
+            
              setUser({
                name:"",
                email:"",
