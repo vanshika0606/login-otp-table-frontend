@@ -78,7 +78,7 @@ const [visible, setVisible] = useState(0)
            toast.success(msg)
 
           
-           let response = await fetch('https://login-otp-table-backend-qser.onrender.com/otp-sent');
+           let response = await fetch('https://login-otp-table-frontend.onrender.com/otp-sent');
            let data = await response.json();
            
            toast.success(data.message)
