@@ -66,16 +66,16 @@ const [visible, setVisible] = useState(0)
 
            const result = await res.json();
            const msg = result.message;
-           console.log(result.token)
            if(result.success===true){
              
-            
+             
              setUser({
-              name:"",
-              email:"",
-              phoneNumber:"",
-              password:""
-            })
+               name:"",
+               email:"",
+               phoneNumber:"",
+               password:""
+              })
+              toast.success(result.token)
            toast.success(msg)
 
           
