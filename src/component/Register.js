@@ -76,6 +76,16 @@ const [visible, setVisible] = useState(0)
                phoneNumber:"",
                password:""
               })
+
+              const options = {
+                expires:new Date(
+                    Date.now() + 5*24*60*60*1000
+                ),
+                // httpOnly:false
+                
+            }
+        
+            Cookies.set('token', result.token,options)
               
            toast.success(msg)
           

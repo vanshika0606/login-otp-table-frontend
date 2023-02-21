@@ -3,6 +3,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import {Link, useNavigate} from 'react-router-dom'
 import './table.css';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie'
 
 
 const Table = (props) => {
@@ -20,13 +21,19 @@ const Table = (props) => {
 
     const logout = async()=>{
      let succ,msg;
-    await  fetch("https://login-otp-table-backend-qser.onrender.com/logout").then((res)=>{
+    await  fetch("http://localhost:3000/logout").then((res)=>{
       return res.json();
 }).then(async(data)=>{
   succ=data.success;
   msg= data.message;
 })
 if(succ===true){
+
+  Cookies.remove("token",null,{
+    expires:new Date(Date.now()),
+    // httpOnly: true,
+})
+
   toast.success(msg)
   navigate("/login")
 }else{
