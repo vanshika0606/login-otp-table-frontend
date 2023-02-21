@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Table from './component/Table'
 import Addform from './component/Addform.js'
-import Acc from './Accomodation/Acc.js'
+
 import Update from './component/Update';
 import Send from './component/Send.js'
 import { ToastContainer, toast } from 'react-toastify';
