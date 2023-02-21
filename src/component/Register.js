@@ -69,15 +69,19 @@ const [visible, setVisible] = useState(0)
            if(result.success===true){
              
              
+             Cookies.set('token', result.token,{
+              expires:new Date(
+                Date.now() + 5*24*60*60*1000
+            )
+             })
              setUser({
                name:"",
                email:"",
                phoneNumber:"",
                password:""
               })
-              toast.success(result.token)
+              
            toast.success(msg)
-
           
            let response = await fetch('https://login-otp-table-backend-qser.onrender.com/otp-sent');
            let data = await response.json();
