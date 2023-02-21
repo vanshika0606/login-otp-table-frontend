@@ -30,7 +30,7 @@ let value , name;
 
           const {name,email,phoneNumber, hobbies} = table;
 
-          const res = await fetch("https://login-otp-table-backend-qser.onrender.com/addrow",{
+          const res = await fetch("https://login-otp-table-frontend.onrender.com/addrow",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -57,7 +57,7 @@ let value , name;
             })
             props.setSubmitform(1);
             toast.success("Row added successfully!");
-            // navigate("/allrows")
+            navigate("/allrows")
            }else{
             const msg = result.message;
             toast.error(msg);

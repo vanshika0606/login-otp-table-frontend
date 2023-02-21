@@ -26,7 +26,7 @@ const Update = (props) => {
 
         e.preventDefault();
 
-        const res = await fetch("https://login-otp-table-backend-qser.onrender.com/updaterow/" + props.id, {
+        const res = await fetch("https://login-otp-table-frontend.onrender.com/updaterow/" + props.id, {
             method:"PUT",
             headers:{
               "Content-Type": "application/json"

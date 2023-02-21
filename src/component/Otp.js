@@ -13,7 +13,7 @@ const Otp = () => {
     e.preventDefault();
     // let oo=otp
   
-    let response = await fetch('https://login-otp-table-backend-qser.onrender.com/email-verification',{
+    let response = await fetch('https://login-otp-table-frontend.onrender.com/email-verification',{
       method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -41,7 +41,7 @@ const Otp = () => {
 
   const resendOtp = async()=>{
 
-    let response = await fetch('https://login-otp-table-backend-qser.onrender.com/otp-sent');
+    let response = await fetch('https://login-otp-table-frontend.onrender.com/otp-sent');
     let data = await response.json();
     toast.success(data.message)
   }
