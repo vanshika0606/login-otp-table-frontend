@@ -21,18 +21,13 @@ const Table = (props) => {
 
     const logout = async()=>{
      let succ,msg;
-    await  fetch("http://localhost:3000/logout").then((res)=>{
+    await  fetch("http://localhost:3001/logout").then((res)=>{
       return res.json();
 }).then(async(data)=>{
   succ=data.success;
   msg= data.message;
 })
 if(succ===true){
-
-  Cookies.remove("token",null,{
-    expires:new Date(Date.now()),
-    // httpOnly: true,
-})
 
   toast.success(msg)
   navigate("/login")
@@ -46,7 +41,7 @@ if(succ===true){
     }
     
     const fetchData = async()=>{
-          fetch("https://login-otp-table-backend-qser.onrender.com/allrows").then((res)=>{
+          fetch("http://localhost:3000/allrows").then((res)=>{
                 return res.json();
           }).then(async(data)=>{
             setRows(data.table)
@@ -128,9 +123,6 @@ if(succ===true){
         
          
          onClick={ (e)=>{
-        
-         
-           
            
              let m=-1;
            c.forEach(a=>{
@@ -171,7 +163,7 @@ if(succ===true){
        <i className="fa fa-trash" aria-hidden="true"
        onClick={()=>{
         
-        fetch('https://login-otp-table-backend-qser.onrender.com/deleterow/' +r._id, {
+        fetch('http://localhost:3000/deleterow/' +r._id, {
       method: 'DELETE',
     })
 

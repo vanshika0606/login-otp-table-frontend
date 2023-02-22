@@ -50,7 +50,7 @@ const [visible, setVisible] = useState(0)
         }else{
 
          
-        const res = await fetch("https://login-otp-table-backend-qser.onrender.com/",{
+        const res = await fetch("http://localhost:3001/",{
             method:"POST",
             
               headers: {  'Content-Type': 'application/json' },
@@ -68,7 +68,15 @@ const [visible, setVisible] = useState(0)
            const msg = result.message;
            if(result.success===true){
              
-             
+            const options = {
+              expires:new Date(
+                  Date.now() + 5*24*60*60*1000
+              ),
+              // httpOnly:false
+              
+          }
+      
+      //  Cookies.set('token', result.token,options)
             
              setUser({
                name:"",
@@ -77,19 +85,11 @@ const [visible, setVisible] = useState(0)
                password:""
               })
 
-              const options = {
-                expires:new Date(
-                    Date.now() + 5*24*60*60*1000
-                ),
-                // httpOnly:false
-                
-            }
-        
-            Cookies.set('token', result.token,options)
+              
               
            toast.success(msg)
           
-           let response = await fetch('https://login-otp-table-backend-qser.onrender.com/otp-sent');
+           let response = await fetch('http://localhost:3001/otp-sent');
            let data = await response.json();
            
            toast.success(data.message)
