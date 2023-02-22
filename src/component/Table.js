@@ -21,7 +21,7 @@ const Table = (props) => {
 
     const logout = async()=>{
      let succ,msg;
-    await  fetch("https://login-otp-table-backend-qser.onrender.com/logout").then((res)=>{
+    await  fetch("https://login-otp-backend.onrender.com/logout").then((res)=>{
       return res.json();
 }).then(async(data)=>{
   succ=data.success;
@@ -41,7 +41,7 @@ if(succ===true){
     }
     
     const fetchData = async()=>{
-          fetch("https://login-otp-table-backend-qser.onrender.com/allrows").then((res)=>{
+          fetch("https://login-otp-backend.onrender.com/allrows").then((res)=>{
                 return res.json();
           }).then(async(data)=>{
             setRows(data.table)
@@ -163,7 +163,7 @@ if(succ===true){
        <i className="fa fa-trash" aria-hidden="true"
        onClick={()=>{
         
-        fetch('https://login-otp-table-backend-qser.onrender.com/deleterow/' +r._id, {
+        fetch('https://login-otp-backend.onrender.com/deleterow/' +r._id, {
       method: 'DELETE',
     })
 

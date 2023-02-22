@@ -50,7 +50,7 @@ const [visible, setVisible] = useState(0)
         }else{
 
          
-        const res = await fetch("https://login-otp-table-backend-qser.onrender.com/",{
+        const res = await fetch("https://login-otp-backend.onrender.com/",{
             method:"POST",
             
               headers: {  'Content-Type': 'application/json' },
@@ -89,7 +89,7 @@ const [visible, setVisible] = useState(0)
               
            toast.success(msg)
           
-           let response = await fetch('https://login-otp-table-backend-qser.onrender.com/otp-sent');
+           let response = await fetch('https://login-otp-backend.onrender.com/otp-sent');
            let data = await response.json();
            
            toast.success(data.message)

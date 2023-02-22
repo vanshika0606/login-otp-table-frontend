@@ -30,7 +30,7 @@ let value , name;
 
           const {name,email,phoneNumber, hobbies} = table;
 
-          const res = await fetch("https://login-otp-table-backend-qser.onrender.com/addrow",{
+          const res = await fetch("https://login-otp-backend.onrender.com/addrow",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
