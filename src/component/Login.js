@@ -35,7 +35,7 @@ const Login = () => {
 
          const{email, password} = login
 
-         const res = await fetch("https://login-otp-backend.onrender.com/login",{
+         const res = await fetch("http://localhost:3001/login",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json"

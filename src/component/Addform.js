@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FullContext from '../Context/FullContext';
 
 import './form.css';
 
-const Addform = (props) => {
+const Addform = () => {
+
+  const store = useContext(FullContext)
 
 const navigate = useNavigate()
     const [table,setTable] = useState({
@@ -30,7 +33,7 @@ let value , name;
 
           const {name,email,phoneNumber, hobbies} = table;
 
-          const res = await fetch("https://login-otp-backend.onrender.com/addrow",{
+          const res = await fetch("http://localhost:3001/addrow",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -48,14 +51,14 @@ let value , name;
           
            if(result.success===true){
              
-             props.setAdd(0);
+             store.setAdd(0);
              setTable({
               name:"",
               email:"",
               phoneNumber:"",
               hobbies:""
             })
-            props.setSubmitform(1);
+            store.setSubmitform(1);
             toast.success("Row added successfully!");
             navigate("/allrows")
            }else{

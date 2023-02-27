@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./form.css"
 import { toast, ToastContainer } from 'react-toastify';
+import FullContext from '../Context/FullContext';
 
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const Update = (props) => {
+const Update = () => {
+
+  const store = useContext(FullContext)
 
     
 
@@ -15,18 +18,18 @@ const Update = (props) => {
         name= e.target.name;
       value=  e.target.value;
         
-      props.setUpdateRow({...props.updateRow,[name]:value});
+      store.setUpdateRow({...store.updateRow,[name]:value});
 
 
     }
 
     const update = async(e)=>{
         const {name, phoneNumber,email,
-            hobbies} = props.updateRow;
+            hobbies} = store.updateRow;
 
         e.preventDefault();
 
-        const res = await fetch("https://login-otp-backend.onrender.com/updaterow/" + props.id, {
+        const res = await fetch("http://localhost:3001/updaterow/" + store.id, {
             method:"PUT",
             headers:{
               "Content-Type": "application/json"
@@ -39,7 +42,7 @@ const Update = (props) => {
              hobbies
             })
         })
-        props.setUpdate(0);
+        store.setUpdate(0);
         toast.success("Row updated successfully!")
 
     }
@@ -50,25 +53,25 @@ const Update = (props) => {
     <div className='box-form'>
       <form  className="formm" method="PUT">
             <label for="name" >Name  </label>
-            <input  name="name" id="name" value={props.updateRow.name} type="text"
+            <input  name="name" id="name" value={store.updateRow.name} type="text"
             onChange={handleInput} />
             <br/>
 
             <label for="email" >Email  </label>
-            <input  name="email" id="email" value={props.updateRow.email} type="text"
+            <input  name="email" id="email" value={store.updateRow.email} type="text"
             onChange={handleInput} />
             <br/>
 
             <label for="phone" >Phone Number  </label>
             <input  name="phoneNumber" id="phone"
-            value={props.updateRow.phoneNumber}
+            value={store.updateRow.phoneNumber}
              type="tel" 
              onChange={handleInput}/>
             <br/>
 
 
             <label for="hobbies" >Hobbies  </label>
-            <input  name="hobbies" id="hobbies" value={props.updateRow.hobbies} type="text"
+            <input  name="hobbies" id="hobbies" value={store.updateRow.hobbies} type="text"
             onChange={handleInput} />
             <br/>
 

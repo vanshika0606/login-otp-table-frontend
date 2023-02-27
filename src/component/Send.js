@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState , useContext} from 'react'
 import { toast } from 'react-toastify';
-
+import FullContext from '../Context/FullContext';
 import './form.css'
 
-const Send = (props) => { 
+const Send = () => { 
 
-// const [send, setSend] = useState([])
+
+const store = useContext(FullContext)
     
 let send=[];
 
@@ -21,10 +22,10 @@ const submit = async(e)=>{
     
     e.preventDefault();
     
-    send.push(  props.send)
+    send.push(  store.send)
     
     
-    const res = await fetch("https://login-otp-backend.onrender.com/send" , {
+    const res = await fetch("http://localhost:3001/send" , {
         method:"POST",
         headers:{
             "Content-Type": "application/json"
@@ -41,7 +42,7 @@ const submit = async(e)=>{
    });
 
  
-        props.setSendbutton(false)
+        store.setSendbutton(false)
         toast.success("Sent to given mail successfully!")
     }
 
